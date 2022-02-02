@@ -14,8 +14,9 @@ TODO for the auto project builder project
 
 ### In Progress
 
-- [ ] Ask the user for the name of the project and the author. Print this information back out the terminal.
+- [ ] Create a directory named after the project
 
 ### Done ✓
 
 - [x] Create the project skeleton
+- [x] Ask the user for the name of the project and the author. Print this information back out the terminal.
