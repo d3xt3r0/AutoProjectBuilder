@@ -1,4 +1,5 @@
-from tabnanny import check
+import os
+from posixpath import abspath
 
 
 def init():
@@ -14,17 +15,29 @@ def init():
     project_desc = input(" > How do you describe this project?\n")
 
     #Check if the project name contains illegal characters
-    project_name = check_project_name(project_name)
+    project_name = check_name(project_name)
 
 
     #Print the detatils back to the user
-    print("### PROJECT DETAILS ###")
-    print(f"Project Name : {project_name}")
-    print(f"Author : {project_author}")
-    print(f"Project Description : {project_desc}")
+    print(" > ### PROJECT DETAILS ###")
+    print(f" > Project Name : {project_name}")
+    print(f" > Author : {project_author}")
+    print(f" > Project Description : {project_desc}")
 
 
-def check_project_name(name):
+    #Create the project folder
+    
+    dir_path = "../../" + project_name
+    create_dir(dir_path)
+    abs_path = os.path.abspath(dir_path)
+    print(f" > Project folder created at {abs_path}")
+
+
+def check_name(name):
+
+    '''
+    Check if the name contains any illegal characters
+    '''
 
     for char in name:
         if not char.isalnum():
@@ -33,9 +46,25 @@ def check_project_name(name):
             else:
                 print(f" > The character {char} is not supported")
                 print(" > Please enter new project name")
-                name = check_project_name(input())
+                name = check_name(input())
                 break
     return name
+
+def create_dir(dir_path):
+
+    '''
+    To crete a directory in the name provided through the dir_path argument.
+
+    '''
+
+    #create dir
+
+    try:
+        os.mkdir(dir_path)
+    except OSError as error:
+        print(error)
+
+
 
 
 
