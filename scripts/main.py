@@ -1,6 +1,7 @@
 import os
 from posixpath import abspath
 import sys
+from jinja2 import Template
 
 def init():
     '''
@@ -14,6 +15,9 @@ def init():
     project_name = input(" > What is the name of the project?\n")
     project_author = input(" > Who is the author of this project?\n")
     project_desc = input(" > How do you describe this project?\n")
+
+
+    
 
     #Check if the project name contains illegal characters
     project_name = check_name(project_name)
@@ -38,8 +42,16 @@ def init():
     #Create the README.md file
 
     readme_filename = abs_path + "\README.md"
-    readme_content = f"# {project_name}\n\n## Description \n{project_desc}\n\n## How to install the project\n\nTODO\n\n## How to run the project\n\nTODO\n\n## Author\n\n{project_author}"
-    if create_file(readme_filename, readme_content):
+    template_path = os.path.abspath("../templates/README.md.template")
+
+    rendered_readme = load_template(template_path,
+    {
+        "project_name" : project_name,
+        "author_name" : project_author
+    }
+    )
+    #readme_content = f"# {project_name}\n\n## Description \n{project_desc}\n\n## How to install the project\n\nTODO\n\n## How to run the project\n\nTODO\n\n## Author\n\n{project_author}"
+    if create_file(readme_filename, rendered_readme):
         print(f" > README.md created at {readme_filename}\n")
     else:
         sys.exit(" ** The file already exists")
@@ -87,6 +99,19 @@ def create_file(file_name, contents=""):
         return False
     return True
 
+def load_template(template_loc,params):
+
+    '''
+    Loads the template and render it with the params and returns the string
+    '''
+
+    rendered_string = ""
+    with open(template_loc,'r') as f:
+
+        temp = Template(f.read())
+        rendered_string = temp.render(params)
+
+    return rendered_string
 
 if __name__ == "__main__":
 
