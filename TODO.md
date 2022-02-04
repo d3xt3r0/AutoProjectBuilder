@@ -4,12 +4,15 @@ TODO for the auto project builder project
 
 ### Todo
 
-- [ ] Create a TODO.md file and a main code file using template files
-- [ ] Refactor file creation into a reusable function
+- [ ] Create .gitignore file
+- [ ] Initialize git?
+- [ ] Create venv
+- [ ] Create a github repo
+- [ ] Link local repo and github repo
 
 ### In Progress
 
-- [ ] Create a TODO.md file and a main code file using template files
+
 
 ### Done ✓
 
@@ -18,3 +21,4 @@ TODO for the auto project builder project
 - [x] Create a directory named after the project
 - [x] Create a README.md file inside the new directory, containing information about the project and the author
 - [x] Refactor our code to format our README.md file using a template file
+- [x] Create a TODO.md file and a main code file using template files

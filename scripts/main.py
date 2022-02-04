@@ -50,11 +50,45 @@ def init():
         "author_name" : project_author
     }
     )
-    #readme_content = f"# {project_name}\n\n## Description \n{project_desc}\n\n## How to install the project\n\nTODO\n\n## How to run the project\n\nTODO\n\n## Author\n\n{project_author}"
+    
     if create_file(readme_filename, rendered_readme):
         print(f" > README.md created at {readme_filename}\n")
     else:
         sys.exit(" ** The file already exists")
+
+    #Create the TODO.md file and main.py file
+
+    filename = abs_path + "\TODO.md"
+    template_path = os.path.abspath("../templates/TODO.md.template")
+
+    rendered = load_template(template_path,
+    {
+        "project_name" : project_name
+    }
+    )
+    
+    if create_file(filename, rendered):
+        print(f" > TODO.md created at {filename}\n")
+    else:
+        sys.exit(" ** The file already exists")
+
+
+    filename = abs_path + "\main.py"
+    template_path = os.path.abspath("../templates/main.py.template")
+
+    rendered = load_template(template_path,
+    {
+        "project_name" : project_name
+    }
+    )
+    
+    if create_file(filename, rendered):
+        print(f" > main.py created at {filename}\n")
+    else:
+        sys.exit(" ** The file already exists")
+
+
+
 
 def check_name(name):
 
