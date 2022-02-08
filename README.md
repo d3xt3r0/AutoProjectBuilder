@@ -1,6 +1,7 @@
 # Auto Project Builder
 
-![Discord Bot](https://ibb.co/YXzfQHV)
+![Auto Project Builder](https://i.ibb.co/0KgY2Hz/logo.png)
+
 
 ### Automates the repetitive tasks while starting a new project
 
